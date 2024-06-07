@@ -1,10 +1,10 @@
 // Subject.ts
 namespace Subjects {
     export class Subject {
-        private _teacher: Teacher;
+        teacher: Teacher;
 
-        public setTeacher(teacher: Teacher): void {
-            this._teacher = teacher;
+        setTeacher(teacher: Teacher): void {
+            this.teacher = teacher;
         }
     }
 }
