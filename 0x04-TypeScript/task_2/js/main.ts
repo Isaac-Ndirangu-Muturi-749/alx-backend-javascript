@@ -1,7 +1,7 @@
 // Define the DirectorInterface
 interface DirectorInterface {
   workFromHome(): string;
-  getToWork(): string;
+  getCoffeeBreak(): string;
   workDirectorTasks(): string;
 }
 
@@ -18,7 +18,7 @@ class Director implements DirectorInterface {
     return "Working from home";
   }
 
-  getToWork(): string {
+  getCoffeeBreak(): string {
     return "Getting a coffee break";
   }
 
@@ -51,13 +51,6 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-// Test the createEmployee function
-console.log(createEmployee(200)); // Output: Teacher
-console.log(createEmployee(1000)); // Output: Director
-console.log(createEmployee("$500")); // Output: Director
-
-
-
 // Define the isDirector function as a type predicate
 function isDirector(employee: Director | Teacher): employee is Director {
   return (employee as Director).workDirectorTasks !== undefined;
@@ -75,9 +68,6 @@ function executeWork(employee: Director | Teacher): string {
 // Test the executeWork function
 console.log(executeWork(createEmployee(200))); // Output: Getting to work
 console.log(executeWork(createEmployee(1000))); // Output: Getting to director tasks
-
-
-
 
 // Define the Subjects string literal type
 type Subjects = 'Math' | 'History';
