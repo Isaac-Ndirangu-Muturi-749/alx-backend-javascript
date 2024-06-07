@@ -1,3 +1,4 @@
+// Define the Teacher interface
 interface Teacher {
   firstName: string;
   lastName: string;
@@ -7,21 +8,10 @@ interface Teacher {
   [key: string]: any; // Allow adding any additional attributes
 }
 
+// Define the Directors interface that extends Teacher
 interface Directors extends Teacher {
   numberOfReports: number;
 }
-
-const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
-
-console.log(director1);
-
-
 
 // Define the interface for the printTeacher function
 interface printTeacherFunction {
@@ -36,11 +26,6 @@ const printTeacher: printTeacherFunction = (firstName, lastName) => {
   const fullName = `${firstLetter}. ${lastName}`;
   return fullName;
 };
-
-// Test the function
-console.log(printTeacher("John", "Doe")); // Output: J. Doe
-
-
 
 
 // Define an interface for the constructor of the StudentClass
@@ -77,10 +62,3 @@ class Student implements StudentClass {
     return this.firstName;
   }
 }
-
-// Test the StudentClass
-const student1 = new Student({ firstName: "John", lastName: "Doe" });
-console.log(student1.workOnHomework()); // Output: Currently working
-console.log(student1.displayName()); // Output: John
-
-
