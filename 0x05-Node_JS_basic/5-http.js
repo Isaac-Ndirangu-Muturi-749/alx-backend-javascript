@@ -21,12 +21,11 @@ const app = http.createServer((req, res) => {
     countStudents(filePath)
       .then((data) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.write('This is the list of our students\n');
-        res.end(`${data.join('\n')}`);
+        res.end(`This is the list of our students\n${data.join('\n')}`);
       })
       .catch((error) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end(`${error.message}`);
+        res.end(`This is the list of our students\n${error.message}`);
       });
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
