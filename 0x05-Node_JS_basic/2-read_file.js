@@ -6,6 +6,8 @@ function countStudents(path) {
     const data = fs.readFileSync(path, 'utf8');
 
     // Split the content by new lines to get each row
+    // any empty lines (which might be present due to trailing newlines
+    // or blank lines in the file) are filtered out(non-truthy)
     const rows = data.split('\n').filter((row) => row);
 
     // Remove the header row
