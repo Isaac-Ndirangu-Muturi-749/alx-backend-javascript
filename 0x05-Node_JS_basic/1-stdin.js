@@ -2,10 +2,14 @@
 
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Read user input from the command line
 process.stdin.on('data', (data) => {
-  const name = data.toString().trim();
-  process.stdout.write(`Your name is: ${name}\n`);
-  process.stdout.write('This important software is now closing\n');
-  process.exit();
+  const input = data.toString().trim();
+
+  if (input.toLowerCase() === 'end') {
+    process.stdout.write('This important software is now closing\n');
+    process.exit();
+  } else {
+    process.stdout.write(`Your name is: ${input}\n`);
+    process.stdout.write("Enter 'end' to close the program\n");
+  }
 });
