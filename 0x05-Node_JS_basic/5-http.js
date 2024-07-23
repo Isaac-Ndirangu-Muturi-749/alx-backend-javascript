@@ -6,7 +6,7 @@ const PORT = 1245;
 const hostname = '127.0.0.1';
 
 const app = http.createServer((req, res) => {
-  const url = req.url;
+  const { url } = req;
 
   if (url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -21,7 +21,8 @@ const app = http.createServer((req, res) => {
     countStudents(filePath)
       .then((data) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(`This is the list of our students\n${data}`);
+        res.write('This is the list of our students\n');
+        res.end(`${data.join('\n')}`);
       })
       .catch((error) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
