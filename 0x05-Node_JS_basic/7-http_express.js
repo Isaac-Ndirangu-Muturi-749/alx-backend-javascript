@@ -4,6 +4,10 @@ const countStudents = require('./3-read_file_async');
 const app = express();
 const PORT = 1245;
 
+const args = process.argv.slice(2);
+const filePath = args[0];
+
+
 // Handle requests to the root endpoint
 app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
@@ -11,13 +15,6 @@ app.get('/', (req, res) => {
 
 // Handle requests to the /students endpoint
 app.get('/students', async (req, res) => {
-  const filePath = process.argv[2]; // Get the file path from command line arguments
-
-  if (!filePath) {
-    res.status(400).send('No database file provided');
-    return;
-  }
-
   try {
     const result = await countStudents(filePath);
     res.send(`This is the list of our students\n${result.join('\n')}`);
@@ -28,6 +25,7 @@ app.get('/students', async (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
 
 module.exports = app;
