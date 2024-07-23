@@ -24,16 +24,20 @@ function countStudents(path) {
       const totalStudents = students.length;
 
       // Build the result string
-      let result = `Number of students: ${totalStudents}\n`;
+      let message = `Number of students: ${totalStudents}`;
+      console.log(message);
+
+      const result = [];
+      result.push(message);
 
       for (const [field, names] of Object.entries(fields)) {
-        result += `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}\n`;
+        message = `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`;
+        console.log(message);
+        result.push(message);
       }
 
-      console.log(`${result.trim()}`);
-
-      // Resolve the promise with the result string
-      resolve(result.trim()); // Trim to remove any trailing new line
+      // Resolve the promise
+      resolve(result);
     });
   });
 }
