@@ -1,15 +1,14 @@
-// 1-stdin.js
-
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-process.stdin.on('data', (data) => {
-  const input = data.toString().trim();
+process.stdin.setEncoding('utf8');
 
-  if (input.toLowerCase() === 'end') {
-    process.stdout.write('This important software is now closing\n');
-    process.exit();
-  } else {
-    process.stdout.write(`Your name is: ${input}\n`);
-    process.stdout.write("Enter 'end' to close the program\n");
+process.stdin.on('readable', () => {
+  const chunk = process.stdin.read();
+  if (chunk !== null) {
+    process.stdout.write(`Your name is: ${chunk}`);
   }
+});
+
+process.stdin.on('end', () => {
+  process.stdout.write('This important software is now closing\n');
 });
