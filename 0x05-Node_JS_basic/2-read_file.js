@@ -9,7 +9,7 @@ function countStudents(path) {
     const rows = data.split('\n').filter((row) => row);
 
     // Remove the header row
-    // const header = rows.shift();
+    rows.shift();
 
     // Initialize an object to store the counts and student names by field
     const fields = {};
