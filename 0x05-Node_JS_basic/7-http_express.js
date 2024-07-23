@@ -3,6 +3,8 @@ const countStudents = require('./3-read_file_async');
 
 const app = express();
 const PORT = 1245;
+const filePath = process.argv[2]; // Get the file path from command line arguments
+
 
 // Handle requests to the root endpoint
 app.get('/', (req, res) => {
@@ -11,7 +13,6 @@ app.get('/', (req, res) => {
 
 // Handle requests to the /students endpoint
 app.get('/students', async (req, res) => {
-  const filePath = process.argv[2]; // Get the file path from command line arguments
 
   if (!filePath) {
     res.status(400).send('No database file provided');
@@ -23,7 +24,6 @@ app.get('/students', async (req, res) => {
     res.send(`This is the list of our students\n${result.join('\n')}`);
   } catch (error) {
     res.status(500).send(error.message);
-    res.send(`This is the list of our students\n${error.message}`);
   }
 });
 
